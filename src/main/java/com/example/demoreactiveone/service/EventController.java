@@ -27,7 +27,7 @@ public class EventController {
      * gerado em tempo real, passa um a um com o intervalo de 1 segundo
      * @return event
      */
-    @GetMapping(value = "/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/events", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     Flux<Event> events() {
         Flux<Event> eventFlux = Flux.
                 fromStream(Stream.generate(() -> new Event(System.currentTimeMillis(), new Date())));
@@ -40,7 +40,7 @@ public class EventController {
      * com base em uma colecao, passa um a um com o intervalo de 1 segundo
      * @return event
      */
-    @GetMapping(value = "/events/know", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/events/know", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     Flux<Event> knowEvents() {
         return Flux.zip(Flux.fromStream(this::getListOfEvent), Flux.interval(Duration.ofSeconds(3)))
                 .map(Tuple2::getT1);

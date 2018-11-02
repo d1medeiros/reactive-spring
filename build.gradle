@@ -28,6 +28,7 @@ repositories {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-webflux')
     compileOnly('org.projectlombok:lombok')
+	compile("org.json:json")
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('io.projectreactor:reactor-test')
 }

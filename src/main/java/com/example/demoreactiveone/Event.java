@@ -6,6 +6,9 @@ public class Event {
     private long id;
     private Date when;
 
+    public Event() {
+    }
+
     public Event(long id, Date when) {
         this.id = id;
         this.when = when;
@@ -25,5 +28,13 @@ public class Event {
 
     public void setWhen(Date when) {
         this.when = when;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", when=" + when +
+                '}';
     }
 }
