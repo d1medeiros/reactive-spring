@@ -3,8 +3,8 @@ package com.example.demoreactiveone;
 import java.util.Date;
 
 public class Event {
-    private  long id;
-    private  Date when;
+    private long id;
+    private Date when;
 
     public Event(long id, Date when) {
         this.id = id;
