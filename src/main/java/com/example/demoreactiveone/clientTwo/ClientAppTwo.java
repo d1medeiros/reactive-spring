@@ -1,4 +1,4 @@
-package com.example.demoreactiveone.client;
+package com.example.demoreactiveone.clientTwo;
 
 import com.example.demoreactiveone.Event;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.stream.IntStream;
 
 @SpringBootApplication
-public class ClientApp {
+public class ClientAppTwo {
 
     @Bean
     public WebClient clientOne() {
@@ -27,8 +27,8 @@ public class ClientApp {
     }
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(ClientApp.class)
-                .properties(Collections.singletonMap("server.port", "8081"))
+        new SpringApplicationBuilder(ClientAppTwo.class)
+                .properties(Collections.singletonMap("server.port", "8082"))
                 .run(args);
     }
 
@@ -70,7 +70,7 @@ class SampleCLR implements CommandLineRunner {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("ClientApp: "+event);
+                    System.out.println("ClientAppTwo: "+event);
                     return event;
                 });
     }

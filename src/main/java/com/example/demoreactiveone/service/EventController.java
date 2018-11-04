@@ -58,7 +58,7 @@ public class EventController {
     }
 
     private Stream<Event> getListOfEvent() {
-        return IntStream.range(0, 20)
+        return IntStream.range(0, 5)
                 .mapToObj(i -> new Event(i, new Date()));
     }
 

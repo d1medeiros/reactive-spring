@@ -1,25 +1,31 @@
 package com.example.demoreactiveone;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 
+@Document("event")
 public class Event {
-    private long id;
+    @Id
+    private String _id;
     private Date when;
 
     public Event() {
     }
 
-    public Event(long id, Date when) {
-        this.id = id;
+    public Event(long _id, Date when) {
+        this._id = _id + "";
         this.when = when;
     }
 
-    public long getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public Date getWhen() {
@@ -33,7 +39,7 @@ public class Event {
     @Override
     public String toString() {
         return "Event{" +
-                "id=" + id +
+                "_id=" + _id +
                 ", when=" + when +
                 '}';
     }
