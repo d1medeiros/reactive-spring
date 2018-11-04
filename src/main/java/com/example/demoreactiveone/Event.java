@@ -10,6 +10,7 @@ import java.util.Date;
 public class Event {
     @Id
     private String _id;
+    private String info;
     private Date when;
 
     public Event() {
@@ -36,10 +37,19 @@ public class Event {
         this.when = when;
     }
 
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
-                "_id=" + _id +
+                "_id='" + _id + '\'' +
+                ", info='" + info + '\'' +
                 ", when=" + when +
                 '}';
     }

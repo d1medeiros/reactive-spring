@@ -12,6 +12,7 @@ import reactor.util.function.Tuple2;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -42,8 +43,16 @@ public class EventController {
      */
     @GetMapping(value = "/events/know", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     Flux<Event> knowEvents() {
-        return Flux.zip(Flux.fromStream(this::getListOfEvent), Flux.interval(Duration.ofSeconds(3)))
-                .map(Tuple2::getT1);
+        return Flux.zip(Flux.fromStream(this::getListOfEvent), Flux.interval(Duration.ofSeconds(1)))
+                .map(Tuple2::getT1)
+                .doOnNext(event -> {
+                    int ints = new Random().nextInt(5);
+                    System.out.println("server: event - "+event.get_id() + "  random:" + ints);
+                    if(ints == 3)
+                        throw new NullPointerException();
+                })
+                .doOnError(Throwable::printStackTrace)
+                .retry(4);
     }
 
     /**

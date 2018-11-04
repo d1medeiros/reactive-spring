@@ -67,6 +67,7 @@ class SampleCLR implements CommandLineRunner {
                     Event event = new Event();
                     try {
                         event = new ObjectMapper().readValue(s, Event.class);
+                        event.setInfo("client TWO");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
